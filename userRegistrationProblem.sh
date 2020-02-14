@@ -12,10 +12,13 @@ else
 	echo "invalid"
 fi
 }
-echo "Enter a first user name"
-read FirstName 
 
+echo "Enter first name"
+read firstName 
 #For checking valid first name
 conditionCheck  $FirstName $CHECK_FOR_FIRSTNAME_AND_LASTNAME
 
-
+echo "Enter first name and last name"
+read firstName lastName
+#For checking valid first name
+conditionCheck  $firstName $LastName$CHECK_FOR_FIRSTNAME_AND_LASTNAME
