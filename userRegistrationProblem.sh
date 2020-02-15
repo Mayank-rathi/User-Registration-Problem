@@ -4,6 +4,7 @@ echo "Welcome to user registration problem using regex"
 CHECK_FOR_FIRSTNAME_AND_LASTNAME="^[A-Z]{1}[A-Za-z]{3,}$"
 CHECK_FOR_MAIL="^[A-Za-z]{3,}([.|_|+|-]?[a-zA-Z]+)?[@]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,3}([.]?[a-zA-Z]*)?$"
 CHECK_FOR_MOBILE="^[0-9]{1,3}[[:space:]][0-9]{10}$"
+CHECK_FOR_PASSWORD_RULE1="^[A-Za-z]{8,}$"
 
 #Check for valid or invalid condition
 function conditionCheck(){
@@ -26,12 +27,16 @@ read firstName lastName
 conditionCheck  $firstName $LastName$CHECK_FOR_FIRSTNAME_AND_LASTNAME
 
 echo "Enter email "
-read email 
+read email
 #Check for email validation
 conditionCheck $email $CHECK_FOR_MAIL
 
 echo "Enter mobile number "
-read mobileNumber 
+read mobileNumber
 #Check for valid mobile number
 conditionCheck "$mobileNumber" $CHECK_FOR_MOBILE
 
+echo "Enter password "
+read passwordRule1
+#Check for valid for password minimum 8 characters
+conditionCheck $passwordRule1 $CHECK_FOR_PASSWORD_RULE1
