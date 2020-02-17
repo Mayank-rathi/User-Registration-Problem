@@ -1,10 +1,11 @@
-#!/bin/bash 
+#!/bin/bash -x
 echo "Welcome to user registration problem using regex"
 #constant
 CHECK_FOR_FIRSTNAME_AND_LASTNAME="^[A-Z]{1}[A-Za-z]{3,}$"
 CHECK_FOR_MAIL="^[A-Za-z]{3,}([.|_|+|-]?[a-zA-Z]+)?[@]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,3}([.]?[a-zA-Z]*)?$"
 CHECK_FOR_MOBILE="^[0-9]{1,3}[[:space:]][0-9]{10}$"
 CHECK_FOR_PASSWORD_RULE1="^[A-Za-z]{8,}$"
+CHECK_FOR_PASSWORD_RULE2="^[a-zA-Z]*[A-Z]+[a-zA-Z]*{8,}$"
 
 #Check for valid or invalid condition
 function conditionCheck(){
@@ -36,7 +37,12 @@ read mobileNumber
 #Check for valid mobile number
 conditionCheck "$mobileNumber" $CHECK_FOR_MOBILE
 
-echo "Enter password "
+echo "Enter Minimum 8 characters password "
 read passwordRule1
 #Check for valid for password minimum 8 characters
 conditionCheck $passwordRule1 $CHECK_FOR_PASSWORD_RULE1
+
+echo "Enter At least one upper case later password "
+read passwordRule2
+#Check for valid for password minimum 8 characters
+conditionCheck $passwordRule2 $CHECK_FOR_PASSWORD_RULE2
