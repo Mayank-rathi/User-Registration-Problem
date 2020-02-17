@@ -9,9 +9,10 @@ CHECK_FOR_MAIL="^[A-Za-z]{3,}([.|_|+|-]?[a-zA-Z]+)?[@]{1}[a-zA-Z]{2,}[.]{1}[a-zA
 CHECK_FOR_MOBILE="^[0-9]{1,3}[[:space:]][0-9]{10}$"
 CHECK_FOR_PASSWORD_RULE1="^[A-Za-z]{8,}$"
 CHECK_FOR_PASSWORD_RULE2="^[a-zA-Z]*[A-Z]+[a-zA-Z]*{8,}$"
-#Check for at least one digit required in password
+
+#Check for at least one digit and one special character required in password
 function conditionCheckForAtleastOneDigit(){
-if [[  $1 =~ [[:upper:]] &&  $1 =~ [[:digit:]] && ${#1} -ge 8  ]]
+if [[ ${#1} -ge 8 && "$1" == *[[:lower:]]* && "$1" == *[[:upper:]]* && "$1" == *[0-9]* && "$1" == *['!'@#\$%^\&*()_+]* ]]
 then
 	echo "valid"
 else
@@ -19,6 +20,7 @@ else
 fi
 }
 
+: '
 #Check for valid or invalid condition
 function conditionCheck(){
 if [[ $1 =~ $2 ]]
@@ -64,4 +66,8 @@ read passwordRule3
 #Check for valid for password minimum 8 characters and one digit
 conditionCheckForAtleastOneDigit $passwordRule3 
 
-
+'
+echo "Enter At least one upper case later password and one digit and one special character"
+read passwordRule4
+#Check for valid for password minimum 8 characters and one digit
+conditionCheckForAtleastOneDigit $passwordRule4 
